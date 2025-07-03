@@ -1,0 +1,142 @@
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+
+        <div class="col-12 col-md-8 col-lg-6">
+
+            <div id="alertSuccess" class="alert alert-success d-none" role="alert">
+                Formulario enviado con exito!
+            </div>
+
+
+            <div class="form-container p-4">
+                <!-- Título dinámico -->
+                <h2 class="text-center mb-4">
+                    {{ nombreUsuario ? 'Registro de: ' + nombreUsuario : 'Formulario de Registro' }}
+                </h2>
+
+                <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+
+                    <div class="row">
+                        <!-- Nombre Completo -->
+                        <div class="col-12 mb-3">
+                            <label for="nombreCompleto" class="form-label required">Nombre
+                                Completo</label>
+                            <input type="text" class="form-control"
+                                [class.is-invalid]="registroForm.get('nombreCompleto')?.invalid && registroForm.get('nombreCompleto')?.touched"
+                                id="nombreCompleto" formControlName="nombreCompleto">
+                            <div class="invalid-feedback"
+                                *ngIf="registroForm.get('nombreCompleto')?.invalid && registroForm.get('nombreCompleto')?.touched|| submitted">
+                                Por favor ingrese su nombre completo.
+                            </div>
+                        </div>
+
+
+                        <!-- Nombre de Usuario -->
+                        <div class="col-12  mb-3">
+                            <label for="nombreUsuario" class="form-label required">Nombre de
+                                Usuario</label>
+                            <input type="text" class="form-control" id="nombreUsuario"
+                                [class.is-invalid]="registroForm.get('nombreUsuario')?.invalid && registroForm.get('nombreUsuario')?.touched"
+                                formControlName="nombreUsuario">
+
+                            <div class="invalid-feedback"
+                                *ngIf="registroForm.get('nombreUsuario')?.invalid && registroForm.get('nombreUsuario')?.touched|| submitted">
+                                Por favor ingrese un nombre de usuario.
+                            </div>
+                        </div>
+
+                        <!-- Correo -->
+                        <div class="col-12  mb-3">
+                            <label for="correo" class="form-label required">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="correo"
+                                [class.is-invalid]="registroForm.get('correo')?.invalid && registroForm.get('correo')?.touched"
+                                formControlName="correo" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                                title="Por favor ingrese un correo válido (ejemplo: usuario@dominio.com)">
+                            <div class="invalid-feedback"
+                                *ngIf="registroForm.get('correo')?.invalid && registroForm.get('correo')?.touched|| submitted">
+                                Por favor ingrese un correo electrónico válido.
+                            </div>
+                        </div>
+
+                        <!-- Fecha de Nacimiento -->
+                        <div class="col-12 mb-3">
+                            <label for="fechaNacimiento" class="form-label required">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="fechaNacimiento"
+                                [class.is-invalid]="registroForm.get('fechaNacimiento')?.invalid && registroForm.get('fechaNacimiento')?.touched"
+                                formControlName="fechaNacimiento">
+                            <div class="invalid-feedback"
+                                *ngIf="registroForm.get('fechaNacimiento')?.invalid && registroForm.get('fechaNacimiento')?.touched|| submitted">
+                                <div *ngIf="registroForm.get('fechaNacimiento')?.errors?.['required']">
+                                    La fecha de nacimiento es requerida.
+                                </div>
+                                <div *ngIf="registroForm.get('fechaNacimiento')?.errors?.['edadMinima']">
+                                    Debe ser mayor de 13 años.
+                                    (Edad actual: {{
+                                    registroForm.get('fechaNacimiento')?.errors?.['edadMinima']?.actualAge
+                                    }} años)
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dirección de Despacho (Opcional) -->
+                        <div class="col-12 mb-3">
+                            <label for="direccionDespacho" class="form-label">Dirección de
+                                Despacho</label>
+                            <input type="text" class="form-control" id="direccionDespacho"
+                                [class.is-invalid]="registroForm.get('direccionDespacho')?.invalid && registroForm.get('direccionDespacho')?.touched"
+                                formControlName="direccionDespacho" placeholder="Opcional">
+                        </div>
+
+                        <!-- Contraseña -->
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="contrasena" class="form-label required">Contraseña</label>
+                            <input type="password" class="form-control" id="contrasena"
+                                [class.is-invalid]="registroForm.get('contrasena')?.invalid && registroForm.get('contrasena')?.touched"
+                                formControlName="contrasena">
+                            <div class="form-text">
+                                Entre 6-18 caracteres, al menos 1 número y 1 mayúscula.
+                            </div>
+                            <div class="invalid-feedback"
+                                *ngIf="registroForm.get('contrasena')?.invalid && registroForm.get('contrasena')?.touched|| submitted">
+                                La contraseña debe tener entre 6-18 caracteres, al menos un número y una
+                                letra mayúscula.
+                            </div>
+                        </div>
+
+                        <!-- Confirmar Contraseña -->
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="repetirContrasena" class="form-label required">Confirmar Contraseña</label>
+                            <input type="password" class="form-control" id="repetirContrasena"
+                                formControlName="repetirContrasena"
+                                [class.is-invalid]="(registroForm.hasError('passwordsNoCoinciden') && submitted) || 
+                             (registroForm.get('repetirContrasena')?.invalid && registroForm.get('repetirContrasena')?.touched)">
+                            <div class="invalid-feedback"
+                                *ngIf="registroForm.hasError('passwordsNoCoinciden') && submitted">
+                                Las contraseñas no coinciden.
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Botones -->
+                    <div class="row mt-4">
+                        <div class="col-12 col-sm-6 mb-2">
+                            <button type="button" class="btn btn-secondary btn-custom w-100" id="btnLimpiar"
+                                (click)="onReset()">
+                                Limpiar
+                            </button>
+                        </div>
+                        <div class="col-12 col-sm-6 mb-2">
+                            <button type="submit" class="categoria-btn btn-custom w-100" id="btnEnviar">
+                                Enviar
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

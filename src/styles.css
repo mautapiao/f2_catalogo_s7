@@ -1,0 +1,353 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* colores base */
+
+    --color-fondo: #ffffff;
+    --color-texto: #1f2937;
+    /* gris oscuro texto principal */
+    --color-texto-secundario: #6b7280;
+    /* gris texto secundario */
+    --color-blanco: #ffffff;
+    /* paleta principal gradiente header */
+
+    --color-primario: #d946ef;
+    /* morado usado en botones */
+    --color-primario-hover: #f97316;
+    /* naranja (para hover/interacciones) */
+
+    /* color secundario (derivados del primario) */
+    --color-secundario: #a855f7;
+    /* morado más claro */
+    --color-secundario-hover: #ea580c;
+    /* naranja oscuro */
+
+    /* fondos y superficies */
+    --color-fondo-header: linear-gradient(135deg, var(--color-primario) 0%, var(--color-primario-hover) 100%);
+    --color-fondo-nav: #f8f9fa;
+    /* gris claro para navegación */
+    --color-fondo-footer: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+
+    /* estados y utilidades */
+    --color-borde-activo: #d946ef;
+    /* para bordes de cards hover */
+    --color-exito: #059669;
+    /* verde para precios exito */
+    --color-error: #ef4444;
+    /* rojo para descuentos alerta */
+    --color-sombra: rgba(217, 70, 239, 0.2);
+    /* sombra morada */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+/*
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+*/
+/* Header */
+header {
+    background: var(--color-fondo-header);
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 4px 15px var(--color-sombra);
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* centra horizontalmente */
+    text-align: center;
+}
+
+.logo-img {
+    width: 288px;
+    /* tamaño */
+    height: auto;
+    /* mantiene la proporción */
+    display: block;
+    /* evita espacios no deseados */
+}
+
+/* Navegación */
+nav {
+    background-color: var(--color-fondo-nav);
+    padding: 15px 0;
+    border-bottom: 3px solid var(--color-primario);
+}
+
+.nav-categorias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.categoria-btn {
+    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+    color: var(--color-blanco);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(217, 70, 239, 0.3);
+}
+
+.categoria-btn:hover,
+.categoria-btn.active {
+    background: linear-gradient(135deg, var(--color-primario-hover), var(--color-secundario-hover));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(249, 115, 22, 0.4);
+}
+
+
+
+/* Main contenido */
+main {
+    padding: 30px 0;
+    min-height: 60vh;
+}
+
+.categoria-titulo {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--color-texto);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.categoria-titulo::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(135deg, var(--color-primario), var(--color-primario-hover));
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+/* Juego Grid */
+.juego-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+    .juego-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* creo dos columnas < 768px*/
+    }
+}
+
+@media (min-width: 1024px) {
+    .juego-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* creo tres columnas  tablet */
+    }
+}
+
+@media (min-width: 1200px) {
+    .juego-grid {
+        grid-template-columns: repeat(4, 1fr);
+        /* 4 columnas laptops */
+    }
+}
+
+/* juego tarjeta */
+.juego-card {
+    background: var(--color-blanco);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.juego-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(217, 70, 239, 0.2);
+    border-color: var(--color-borde-activo);
+    cursor: pointer;
+}
+
+.juego-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #f3e8ff, #fef3c7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.juego-image img {
+    height: 180px;
+    width: auto;
+    object-fit: contain;
+}
+
+.juego-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    transform: translateX(-100%);
+    animation: shimmer 3s infinite;
+    /* aplica la animación "shimmer" */
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.juego-info {
+    padding: 20px;
+}
+
+.juego-titulo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--color-texto);
+}
+
+.juego-descripcion {
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.juego-precio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.precio-actual {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--color-exito);
+}
+
+.precio-original {
+    font-size: 1rem;
+    color: var(--color-texto-secundario);
+    text-decoration: line-through;
+}
+
+.descuento-badge {
+    background: linear-gradient(135deg, var(--color-error), #dc2626);
+    /* rojo*/
+    color: var(--color-blanco);
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.sin-descuento {
+    color: #374151;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* seccion catergoarias */
+.categoria-seccion {
+    display: none;
+}
+
+.categoria-seccion.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* footer */
+footer {
+    background: var(--color-fondo-footer);
+    color: var(--color-blanco);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+/* formulario */
+
+.form-container {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-custom {
+    border-radius: 25px;
+    padding: 10px 30px;
+    font-weight: 600;
+}
+
+.btn-primary-color {
+    border-radius: 25px;
+    padding: 10px 30px;
+    font-weight: 600;
+    background-color: var(--color-primario);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #495057;
+}
+
+.required::after {
+    content: " *";
+    color: #dc3545;
+}
+
+.game-image {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}

@@ -1,0 +1,31 @@
+<header>
+  <div class="container">
+    <div class="logo">
+     
+      <!-- Logo tienda Carioca -->
+      <img src="img/logo_carioca.png" alt=" {{ title }}" class="logo-img" />
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="container">
+    <div class="nav-categorias">
+      <button class="categoria-btn" [routerLink]="'/juegos-estrategia'">⚔️ Estrategia</button>
+      <button class="categoria-btn" [routerLink]="'/juegos-familiares'">👨‍👩‍👧‍👦 Familiares</button>
+      <button class="categoria-btn" [routerLink]="'/juegos-party'">🎉 Party Games</button>
+      <button class="categoria-btn" [routerLink]="'/juegos-cooperativos'">🤝 Cooperativos</button>
+      <button class="categoria-btn" [routerLink]="'/registro-cliente'">👤 Registro</button>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; <span id="anio-actual"></span> Tienda Carioca - Somos Juegos de Mesa.</p>
+  </div>
+</footer>

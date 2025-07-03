@@ -1,0 +1,35 @@
+<div *ngIf="juego">
+
+  <div class="row">
+    <!-- Columna izquierda - Imagen -->
+    <div class="col-12 col-md-6 col-lg-5">
+      <div class="text-center">
+        <img [src]="juego.imagen" [alt]="juego.titulo" class="img-fluid rounded shadow game-image p-3">
+      </div>
+    </div>
+    
+    <!-- Columna derecha - Detalles -->
+    <div class="col-12 col-md-6 col-lg-7">
+      <div class="ps-md-4">
+        <h2 class="mb-3">{{ juego.titulo }}</h2>
+        <p class="text-muted mb-3">{{ juego.descripcion }}</p>
+
+        <div class="price-section mb-4">
+          <h4 class="text-primary mb-0">
+            Precio: {{ juego.precioActual | currency:'CLP':'symbol':'1.0-0' }}
+          </h4>
+          <small *ngIf="juego.descuento > 0" class="text-muted text-decoration-line-through">
+            {{ juego.precioOriginal | currency:'CLP':'symbol':'1.0-0' }}
+          </small>
+          <span *ngIf="juego.descuento > 0" class="badge bg-success ms-2">
+            -{{ juego.descuento }}% OFF
+          </span>
+        </div>
+
+        <!-- Botón Regresar -->
+        <button type="button" class="btn btn-outline-secondary" (click)="goBack()">
+          <i class="bi bi-arrow-left me-2"></i>Regresar
+        </button>
+      </div>
+    </div>
+  </div>

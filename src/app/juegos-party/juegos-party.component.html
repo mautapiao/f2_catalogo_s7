@@ -1,0 +1,17 @@
+<h2 class="categoria-titulo">Party Games</h2>
+<div class="juego-grid">
+    
+<div class="col" *ngFor="let juego of juegos">
+    <app-card-juego
+    [id]="juego.id"
+      [categoria]="juego.categoria"
+      [titulo]="juego.titulo"
+      [descripcion]="juego.descripcion"
+      [imagen]="juego.imagen"
+      [precioActual]="juego.precioActual"
+      [precioOriginal]="juego.precioOriginal"
+      [descuento]="juego.descuento">
+    </app-card-juego>
+
+    </div>
+</div>

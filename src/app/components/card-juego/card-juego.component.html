@@ -1,0 +1,16 @@
+<div class="juego-card">
+  <div class="juego-image">
+    <img [src]="imagen" [alt]="titulo">
+  </div>
+  <div class="juego-info">
+    <h3 class="juego-titulo">{{titulo }}</h3>
+    <p class="juego-descripcion">{{ descripcion }}</p>
+    <div class="juego-precio">
+      <span class="precio-actual">{{ precioActual | currency:'CLP':'symbol':'1.0-0' }}</span>
+      <span class="precio-original" *ngIf="descuento>0">{{ precioOriginal | currency:'CLP':'symbol':'1.0-0' }}</span>
+      <span class="descuento-badge" *ngIf="descuento>0">-{{ descuento  }}%</span>
+      <span class="sin-descuento" *ngIf="descuento==0">Sin descuento</span> 
+      <a [routerLink]="['/detalle', id]" class="btn btn-success btn-sm">Ver</a>
+    </div>
+  </div>
+</div>
