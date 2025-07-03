@@ -1,4 +1,4 @@
-# FULLSTACK II SEMANA 5 CATALOGO JUEGOS DE MESA VERSIÓN ANGULAR
+# FULLSTACK II SEMANA 7 CATALOGO JUEGOS DE MESA VERSIÓN ANGULAR
 
 <p align="center">
   <img src="public/img/logo_carioca.png" alt="Logo" width="250">
