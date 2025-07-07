@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { JuegosFamiliaresComponent } from './juegos-familiares.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('JuegosFamiliaresComponent', () => {
   let component: JuegosFamiliaresComponent;
@@ -9,7 +10,7 @@ describe('JuegosFamiliaresComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [JuegosFamiliaresComponent, RouterTestingModule]
+      imports: [JuegosFamiliaresComponent, RouterTestingModule, HttpClientModule]
     })
     .compileComponents();
 

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { JuegosCooperativosComponent } from './juegos-cooperativos.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('JuegosCooperativosComponent', () => {
   let component: JuegosCooperativosComponent;
@@ -8,7 +9,7 @@ describe('JuegosCooperativosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [JuegosCooperativosComponent, RouterTestingModule]
+      imports: [JuegosCooperativosComponent, RouterTestingModule, HttpClientTestingModule]
     })
     .compileComponents();
 

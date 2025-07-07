@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
-
+/**
+ * Servicio de Angular que contiene un catálogo de juegos.
+ * Se puede inyectar en cualquier componente gracias a `providedIn: 'root'`.
+ */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // Hace que el servicio esté disponible de forma global
 })
 export class CatalogoService {
-
+  /** Define el contructor */
   constructor() { }
-
+ /**
+   * Arreglo privado que simula un catálogo de juegos.
+   * En una app real, esto podría venir desde una API o una base de datos.
+   */
   private juegosCatalogos = [
-
     {
       id: 1,
       titulo: 'Pandemic',
@@ -163,10 +168,11 @@ export class CatalogoService {
 
   ];
 
+  /** obtener todos los juegos */
   getJuegosCatalogos() {
     return this.juegosCatalogos;
   }
-
+/** Obtener juego por Id */
   getJuegoPorId(id: number) {
     return this.juegosCatalogos.find(fila => fila.id === id);
   }

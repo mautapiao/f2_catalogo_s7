@@ -8,10 +8,16 @@ import express from 'express';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+/** Obtiene la carpeta donde se encuentra el archivo actual (es decir, el archivo .ts o .js donde está este código)*/
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
+
+/** Resuelve la ruta absoluta a la carpeta de salida del navegador (donde está el build de Angular) */
 const browserDistFolder = resolve(serverDistFolder, '../browser');
 
+/** Inicializa una aplicación Express */
 const app = express();
+
+/** Crea una instancia del motor de renderizado Angular Universal */
 const angularApp = new AngularNodeAppEngine();
 
 /**

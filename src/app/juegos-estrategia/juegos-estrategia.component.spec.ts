@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { JuegosEstrategiaComponent } from './juegos-estrategia.component';
 import { RouterTestingModule } from '@angular/router/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('JuegosEstrategiaComponent', () => {
   let component: JuegosEstrategiaComponent;
@@ -9,7 +10,7 @@ describe('JuegosEstrategiaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [JuegosEstrategiaComponent, RouterTestingModule]
+      imports: [JuegosEstrategiaComponent, RouterTestingModule, HttpClientModule]
     })
     .compileComponents();
 

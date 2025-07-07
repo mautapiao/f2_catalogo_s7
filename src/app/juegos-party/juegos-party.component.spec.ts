@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-
 import { JuegosPartyComponent } from './juegos-party.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('JuegosPartyComponent', () => {
   let component: JuegosPartyComponent;
@@ -9,7 +10,7 @@ describe('JuegosPartyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [JuegosPartyComponent, RouterTestingModule]
+      imports: [JuegosPartyComponent, RouterTestingModule, HttpClientModule]
     })
     .compileComponents();
 

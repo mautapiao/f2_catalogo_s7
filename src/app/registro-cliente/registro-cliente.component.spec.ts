@@ -3,7 +3,6 @@ import { RegistroClienteComponent } from './registro-cliente.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 describe('RegistroClienteComponent', () => {
   let component: RegistroClienteComponent;
   let fixture: ComponentFixture<RegistroClienteComponent>;
